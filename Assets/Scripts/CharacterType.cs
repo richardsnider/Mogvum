@@ -2,8 +2,14 @@
 
 namespace Assets.Scripts
 {
-    class CharacterType
+    public class CharacterType
     {
-        public ICollection<string> Types { get; set; }
+        ICollection<int> PrimaryTypes;
+        ICollection<int> SubTypes;
+
+        public void AddType()
+        {
+
+        }
     }
 }

@@ -3,7 +3,7 @@
     public class CharacterStats
     {
         public Allegiance Allegiance;
-
+        public CharacterType Type;
         //Need to add body part class and make that basis for life levels
 
         public int Size;
