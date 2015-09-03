@@ -2,6 +2,7 @@
 using Assets.Scripts.Enumerables;
 using Assets.Scripts.Interfaces;
 using UnityEngine;
+using Assets.Scripts.Abilities;
 
 namespace Assets.Scripts.Effects
 {
@@ -9,13 +10,15 @@ namespace Assets.Scripts.Effects
     {
         public int Id;
         public string Name;
-        public System.Object Target;
+        public bool IsStackable;
+        public RegionObject Target;
+        public IAbility Source;
         public TargetType TargetType;
         public int Duration; //If Permanent this will be 0 or -1?
 
         public void ApplyEffect()
         {
-            throw new NotImplementedException();
+            Target.Effects
         }
 
         public void RemoveEffect()

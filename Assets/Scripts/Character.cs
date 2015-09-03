@@ -11,8 +11,8 @@ public class Character : RegionObject
 
 	public void GenerateCharacter()
 	{
-        FirstName = 'Name Gneera;akje';
-        LastName = 'bleeeblooo';
+        FirstName = "Name Gneeraakje";
+        LastName = "bleeeblooo";
 	}
 
     public void LoadCharacter(string firstName, string lastName)
