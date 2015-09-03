@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
+using Assets.Scripts.Enumerables;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,7 +10,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        Debug.Log("Player controller has performed start function.");
+        Debug.Log("Player controller initialized start function.");
+        Debug.LogError("Character's PrimaryTypes already contains " + Enum.GetName(typeof(PrimaryType), 2) + ".");
+        Debug.Log("Player controller has finished start function.");
     }
 
     void FixedUpdate()
