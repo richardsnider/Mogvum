@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using Assets.Scripts.Enumerables;
+using Assets.Scripts;
 
-public class SpaceCube
+public class SpaceCube : RegionObject
 {
 	public int row; 
 	public int column;

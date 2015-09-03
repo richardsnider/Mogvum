@@ -1,4 +1,6 @@
-﻿public class Item
+﻿using Assets.Scripts;
+
+public class Item : RegionObject
 {
 	public int Id;
 	public int Weight;

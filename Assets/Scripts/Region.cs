@@ -1,7 +1,15 @@
-﻿public class Region
+﻿using Assets.Scripts;
+using System.Collections.Generic;
+
+public class Region
 {
+    public string Name;
+    public ICollection<RegionObject> RegionObjects;
+
+
+
+
 	public string terrain_type;
-    string name;
 	public int row;
 	public int column;
 	public float y_rotation;
@@ -12,7 +20,7 @@
 			terrain_type = a_terrain_type;
 			row = a_row; column = a_col;
 			y_rotation = a_y_rotation;
-			name = a_name;
+			Name = a_name;
 	}
 
 	public void update_region()

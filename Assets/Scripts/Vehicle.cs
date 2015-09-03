@@ -1,6 +1,6 @@
 ﻿namespace Assets.Scripts
 {
-    class Vehicle
+    class Vehicle : RegionObject
     {
     }
 }

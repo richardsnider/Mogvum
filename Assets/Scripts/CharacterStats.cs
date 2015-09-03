@@ -1,9 +1,13 @@
-﻿namespace Assets.Scripts
+﻿using Assets.Scripts.Interfaces;
+using System.Collections.Generic;
+
+namespace Assets.Scripts
 {
     public class CharacterStats
     {
         public Allegiance Allegiance;
         public CharacterType Type;
+        public ICollection<IEffect> Effects;
         //Need to add body part class and make that basis for life levels
 
         public int Size;
@@ -22,5 +26,10 @@
         //Vitality affects LifeRegen, MaxEnergy, and EnergyRegen.
         //It is determined by energy usage.
         public int Vitality;
+
+        CharacterStats(Allegiance allegiance, CharacterType Type, int Size)
+        {
+
+        }
     }
 }

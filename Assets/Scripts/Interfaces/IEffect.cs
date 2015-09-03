@@ -1,8 +1,8 @@
 ﻿namespace Assets.Scripts.Interfaces
 {
-    interface IEffect
+    public interface IEffect
     {
-        void AddEffect();
+        void ApplyEffect();
         void RemoveEffect();
     }
 }

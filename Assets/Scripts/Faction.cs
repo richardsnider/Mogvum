@@ -1,7 +1,11 @@
-﻿namespace Assets.Scripts
+﻿using System.Collections.Generic;
+
+namespace Assets.Scripts
 {
     class Faction
     {
-        string Name;
+        public int Id;
+        public string Name;
+        ICollection<Character> Characters;
     }
 }
