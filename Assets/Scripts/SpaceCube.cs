@@ -1,15 +1,14 @@
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Enumerables;
 
 public class SpaceCube
 {
 	public int row; 
 	public int column;
 	public int height_level;
-	public int material; //air, water, dirt, stone, wood
+	public Matter material = Matter.Air; //air, water, dirt, stone, wood
 	public bool occupyable;
-	public Character occupant;
+	public ICollection<Character> occupants;
 	public int cover;
 	public int lighting;
 
