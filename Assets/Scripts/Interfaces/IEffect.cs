@@ -2,7 +2,9 @@
 {
     public interface IEffect
     {
-        void ApplyEffect();
-        void RemoveEffect();
+        void Apply();
+        void UnApply();
+        string GetName();
+        bool CanStack();
     }
 }

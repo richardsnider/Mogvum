@@ -4,6 +4,6 @@ namespace Assets.Scripts.Interfaces
 {
     public interface IAbility
     {
-        void Perform(ICollection<RegionObject> targets, RegionObject source);
+        void Perform(RegionObject source, ICollection<RegionObject> targets);
     }
 }

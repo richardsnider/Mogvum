@@ -2,6 +2,21 @@
 {
     public struct RegionCoordinates
     {
-        short x, y, z;
+        private short x, y, z;
+
+        public short X()
+        {
+            return x;
+        }
+
+        public short Y()
+        {
+            return y;
+        }
+
+        public short Z()
+        {
+            return z;
+        }
     }
 }

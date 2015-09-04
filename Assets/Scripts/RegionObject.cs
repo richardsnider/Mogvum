@@ -2,31 +2,40 @@
 using Assets.Scripts.Effects;
 using Assets.Scripts.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Assets.Scripts
 {
     public abstract class RegionObject
     {
-        public Region Region;
-        RegionCoordinates Coordinates;
-        ICollection<IEffect> Effects;
+        private Region Region;
+        private RegionCoordinates Coordinates;
+        private ICollection<IEffect> Effects;
 
-        public void AddEffect(Effect effect)
+        public void AddEffect(IEffect effect)
         {
-           if(!Effects.Contains(effect) || effect.IsStackable) {
+            var matchingNamedEffects = Effects.Where(e => e.GetName() == effect.GetName());
+           if(matchingNamedEffects == null || effect.CanStack()) {
                 Effects.Add(effect);
            }
            else {
-                Debug.Log("Effect " + effect.Name + "is not stackable and is already on RegionObject.");
+                Debug.Log("Effect " + effect.GetName() + "is not stackable and is already on RegionObject.");
            }
         }
 
-        public void RemoveEffect(Effect effect)
+        public void RemoveEffect(IEffect effect)
         {
-            if(Effects.Contains(effect))
+            var matchingNamedEffects = Effects.Where(e => e.GetName() == effect.GetName());
+            if (Effects.Contains(effect))
             {
-                Effects.Remove(effect); //Need to remove just 1 effect, there could be multiple.
+                Effects.Remove(effect);
+                //THIS IS UNFINISHED
             }
+        }
+
+        public RegionCoordinates GetCoordinates()
+        {
+            return Coordinates;
         }
     }
 }

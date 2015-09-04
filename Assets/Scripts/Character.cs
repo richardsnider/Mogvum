@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class Character : RegionObject
 {
     public string FirstName, LastName;
-    public ICollection<IEffect> Effects;
     public CharacterStats Stats;
     public Skill Skill;
 
@@ -22,5 +21,8 @@ public class Character : RegionObject
     }
 
     public void TakeTurn() { }
-    public void PerformAbility() { }
+    public void UseAbility(IAbility ability, ICollection<RegionObject> targets)
+    {
+        ability.Perform(this, targets);
+    }
 }

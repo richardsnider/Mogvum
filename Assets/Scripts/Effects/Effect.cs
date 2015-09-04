@@ -8,22 +8,35 @@ namespace Assets.Scripts.Effects
 {
     public class Effect : IEffect
     {
-        public int Id;
-        public string Name;
-        public bool IsStackable;
-        public RegionObject Target;
-        public IAbility Source;
-        public TargetType TargetType;
-        public int Duration; //If Permanent this will be 0 or -1?
+        private string Name;
+        private bool IsStackable;
+        private RegionObject Target;
+        private IAbility Source;
+        private TargetType TargetType;
+        private int Duration; //If Permanent this will be 0 or -1?
 
-        public void ApplyEffect()
+        public void Apply()
         {
-            Target.Effects
+            var coords = Target.GetCoordinates();
+            Debug.Log("Base effect class has been applied to RegionObject at "
+                + coords.X() + "," + coords.Y() + "," + coords.Z() + "/n");
         }
 
-        public void RemoveEffect()
+        public void UnApply()
         {
-            throw new NotImplementedException();
+            var coords = Target.GetCoordinates();
+            Debug.Log("Base effect class has been removed from RegionObject at "
+               + coords.X() + "," + coords.Y() + "," + coords.Z() + "/n");
+        }
+
+        public string GetName()
+        {
+            return Name;
+        }
+
+        public bool CanStack()
+        {
+            return IsStackable;
         }
     }
 }
