@@ -1,6 +1,6 @@
 ﻿namespace Assets.Scripts.Interfaces
 {
-    interface IBodyPart
+    public interface IBodyPart
     {
         void EquipItem(Item item);
     }

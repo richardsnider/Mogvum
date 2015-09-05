@@ -1,6 +1,6 @@
 ﻿using Assets.Scripts.Interfaces;
 
-namespace Assets.BodyParts
+namespace Assets.Scripts.BodyParts
 {
     class BodyPart : IBodyPart
     {

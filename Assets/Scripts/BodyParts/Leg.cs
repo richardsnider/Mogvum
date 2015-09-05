@@ -1,4 +1,4 @@
-﻿namespace Assets.BodyParts
+﻿namespace Assets.Scripts.BodyParts
 {
     class Leg : BodyPart
     {

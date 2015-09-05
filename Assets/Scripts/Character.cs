@@ -7,6 +7,8 @@ public class Character : RegionObject
     public string FirstName, LastName;
     public CharacterStats Stats;
     public Skill Skill;
+    public Anatomy Anatomy;
+    public Inventory Inventory;
 
 	public void GenerateCharacter()
 	{
