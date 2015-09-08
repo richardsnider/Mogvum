@@ -8,13 +8,18 @@ namespace Assets.Scripts
 {
     public abstract class RegionObject
     {
-        private Region Region;
-        private RegionCoordinates Coordinates;
-        private ICollection<IEffect> Effects;
+        protected Region Region;
+        protected RegionCoordinates Coordinates;
+        protected ICollection<IEffect> Effects;
+
+        //public RegionObject(RegionCoordinates coordinates)
+        //{
+        //    Coordinates = coordinates;
+        //}
 
         public void AddEffect(IEffect effect)
         {
-            var matchingNamedEffects = Effects.Where(e => e.GetName() == effect.GetName());
+           var matchingNamedEffects = Effects.Where(e => e.GetName() == effect.GetName());
            if(matchingNamedEffects == null || effect.CanStack()) {
                 Effects.Add(effect);
            }
@@ -25,7 +30,6 @@ namespace Assets.Scripts
 
         public void RemoveEffect(IEffect effect)
         {
-            var matchingNamedEffects = Effects.Where(e => e.GetName() == effect.GetName());
             if (Effects.Contains(effect))
             {
                 Effects.Remove(effect);

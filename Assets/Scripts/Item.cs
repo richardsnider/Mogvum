@@ -7,4 +7,14 @@ public class Item : RegionObject
 	private int Weight;
     private int Quantity;
 	private int Value;
+
+    public Item()
+    {
+        Inventory = new Inventory();
+    }
+
+    public void AddItem(Item item)
+    {
+        Inventory.AddItem(item);
+    }
 }

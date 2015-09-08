@@ -7,6 +7,11 @@ namespace Assets.Scripts
         private int Capacity;
         private ICollection<Item> Items;
 
+        public Inventory()
+        {
+            Items = new List<Item>();
+        }
+
         public void AddItem(Item item)
         {
             Items.Add(item);

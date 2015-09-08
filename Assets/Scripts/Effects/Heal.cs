@@ -2,12 +2,12 @@
 {
     class Heal : Effect
     {
-        public new void ApplyEffect()
+        public new void Apply()
         {
 
         }
 
-        public new void RemoveEffect()
+        public new void UnApply()
         {
 
         }

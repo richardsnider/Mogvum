@@ -8,9 +8,9 @@ namespace Assets.Scripts.Effects
 {
     public class Effect : IEffect
     {
-        private string Name;
-        private bool IsStackable;
-        private RegionObject Target;
+        protected string Name;
+        private bool IsStackable = false; //This needs to be fixed I think . . . .
+        private RegionObject Target = new Character(); //Need to fix this too . . . 
         private IAbility Source;
         private TargetType TargetType;
         private int Duration; //If Permanent this will be 0 or -1?

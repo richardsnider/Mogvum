@@ -13,6 +13,11 @@ public class RegionCube : RegionObject
 	public int cover;
 	public int lighting;
 
+    //public RegionCube(RegionCoordinates coordinates)
+    //{
+    //    Coordinates = coordinates;
+    //}
+
 	public void new_Space_Cube(int row_, int col, int height)
 	{
 		row = row_;

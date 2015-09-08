@@ -1,15 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Assets.Scripts
 {
     public class Allegiance
     {
-        private Dictionary<string, int> factionLoyalty;
+        private IDictionary<Guid, int> FactionLoyalty;
         private int contentment;
 
-        public int GetAllegiance(string factionName)
+        public Allegiance()
         {
-            return factionLoyalty[factionName];
+            FactionLoyalty = new Dictionary<Guid, int>();
+        }
+
+        public int GetAllegiance(Guid factionName)
+        {
+            return FactionLoyalty[factionName];
         }
 
         public int GetContentment()
@@ -17,9 +23,9 @@ namespace Assets.Scripts
             return contentment;
         }
 
-        public void IncrementAllegiance(string factionName, int value)
+        public void IncrementAllegiance(Guid factionName, int value)
         {
-            factionLoyalty[factionName] += value;
+            FactionLoyalty[factionName] += value;
         }
 
         public void IncrementContentment(int value)
@@ -27,9 +33,9 @@ namespace Assets.Scripts
             contentment += value;
         }
 
-        public void DecrementAllegiance(string factionName, int value)
+        public void DecrementAllegiance(Guid factionName, int value)
         {
-            factionLoyalty[factionName] -= value;
+            FactionLoyalty[factionName] -= value;
         }
 
         public void DecrementContentment(int value)
