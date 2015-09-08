@@ -1,19 +1,28 @@
-﻿using Assets.Scripts.Interfaces;
+﻿using Assets.Scripts.Effects;
+using Assets.Scripts.Interfaces;
+using System.Collections.Generic;
 
 namespace Assets.Scripts.BodyParts
 {
     class BodyPart : IBodyPart
     {
-        Item EquipedItem;
-        //There needs to be some kind of grappable/wieldable interface to distinguish between things that can hold weapons vs limbs that can't (you cant wield a sword with a leg)
-        public int Life, MaxLife, LifeRegen;
-        public int Energy, MaxEnergy, EnergyRegen;
-        public int Soul, MaxSoul, SoulRegen; //Because what is you have an arm made of fire or something crazy like that. Or what if you have a bionic arm?
+        private ICollection<Item> EquippedItems;
+        private bool Grip;
+        private int Life, MaxLife, LifeRegen;
+        private int Energy, MaxEnergy, EnergyRegen;
 
+        ICollection<Effect> Effects; //Is this redundant? I feel like you should be able to add an effect to a body part specifically.
+        private bool Spectral; //Life can be zero.
+        private int Soul, MaxSoul, SoulRegen; //Because what if you have an arm made of fire or something crazy like that. Or what if you have a bionic arm?
 
         public void EquipItem(Item item)
         {
-            EquipedItem = item;
+            EquippedItems.Add(item);
+        }
+
+        public void UnEquipItem(Item item)
+        {
+            EquippedItems.Remove(item);
         }
     }
 }

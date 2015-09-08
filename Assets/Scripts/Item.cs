@@ -2,13 +2,9 @@
 
 public class Item : RegionObject
 {
-	public int Id;
-	public int Weight;
-    public int Quantity;
-	public int value;
-	
-	public void update_item()
-	{
-       
-	}
+    private Inventory Inventory;
+    private bool Grippable;
+	private int Weight;
+    private int Quantity;
+	private int Value;
 }

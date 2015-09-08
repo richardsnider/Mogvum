@@ -15,6 +15,5 @@ namespace Assets.Scripts
         private ICollection<IBodyPart> BodyParts;
 
         private int CarryWeight, MaxCarryWeight;
-
     }
 }
