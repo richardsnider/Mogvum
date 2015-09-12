@@ -1,48 +1,50 @@
 ﻿using Assets.Scripts;
+using Assets.Scripts.Enumerables;
 using System.Collections.Generic;
 
 public class Region
 {
-    public string Name;
-    public ICollection<RegionObject> RegionObjects;
+    private World world;
+    private int x, y;
+    
+    private string name;
+    private TerrainType terrain;
+    private ICollection<RegionCube> cubes;
+    private ICollection<Character> occupants;
+    private ICollection<Item> items;
+    private ICollection<Vehicle> vehicles;
 
+    public Region(World world, int x, int y, string name = null, TerrainType terrain = TerrainType.Fog,
+        ICollection<RegionCube> cubes = null, ICollection<Character> occupants = null, 
+        ICollection<Item> items = null, ICollection<Vehicle> vehicles = null)
+    {
+        this.world = world;
+        this.x = x;
+        this.y = y;
 
+        this.name = name ?? "generateName";
+        this.terrain = terrain;
+        this.cubes = cubes; // ?? GenerateCubes
+        this.occupants = occupants; // ?? GenerateOccupants
+        this.items = items; // ?? GenerateItems
+        this.vehicles = vehicles;
+    }
 
+    public void Day()
+    {
+        foreach(var character in occupants)
+        {
+            character.TakeTurn();
+        }
+    }
 
-	public string terrain_type;
-	public int row;
-	public int column;
-	public float y_rotation;
-	public RegionData region_data;
+    public void RemoveOccupant(Character character)
+    {
+        occupants.Remove(character);
+    }
 
-	public void new_Region(string a_terrain_type, int a_row, int a_col, float a_y_rotation, string a_name)
-	{
-			terrain_type = a_terrain_type;
-			row = a_row; column = a_col;
-			y_rotation = a_y_rotation;
-			Name = a_name;
-	}
-
-	public void update_region()
-	{
-		terrain_type = region_data.terrain_type;
-		row = region_data.row; column = region_data.column;
-		y_rotation = region_data.y_rotation;
-	}
-
-	public void update_data()
-	{
-		region_data.terrain_type = terrain_type;
-		region_data.row = row; region_data.column = column;
-		region_data.y_rotation = y_rotation;
-	}
-
-	[System.Serializable]
-	public class RegionData
-	{
-		public string terrain_type;
-		public float y_rotation;
-		public int row;
-		public int column;
-	}
+    public void AddOccupant(Character character)
+    {
+        occupants.Add(character);
+    }
 }

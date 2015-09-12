@@ -3,23 +3,21 @@ using System.Collections.Generic;
 
 namespace Assets.Scripts
 {
-    class Faction
+    public class Faction
     {
-        public Guid Id;
-        public string Name;
-        ICollection<Character> Characters;
+        private World world;
+        private string name;
+        private ICollection<Character> characters;
 
-        public Faction()
+        public Faction(World world, string name = null, ICollection<Character> characters = null)
         {
-            Id = new Guid();
-            Name = "DefaultFactionName"; //Need to add a generator!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-         
-            Characters = new List<Character>();
+            this.name = name ?? "DefaultFactionName"; //Need to add a generator!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            this.characters = characters ?? new List<Character>();
         }
 
         public void AddCharacter(Character character)
         {
-            Characters.Add(character);
+            characters.Add(character);
         }
     }
 }
