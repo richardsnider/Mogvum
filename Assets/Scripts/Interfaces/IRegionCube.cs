@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Interfaces
 {
-    interface ISpaceCube
+    interface IRegionCube
     {
         void ChangeMaterial(Matter matter);
     }
