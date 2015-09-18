@@ -43,10 +43,9 @@ namespace Assets.Scripts
         {
             if (numFactions < 1) numFactions = 1;
 
-            while(numFactions > 0)
+            for(; numFactions > 0; numFactions--)
             {
                 factions.Add(new Faction(this));
-                numFactions--;
             }
         }
 
@@ -54,11 +53,10 @@ namespace Assets.Scripts
         {
             if (numRegions < 1) numRegions = 1;
 
-            while(numRegions > 0)
+            for(; numRegions > 0; numRegions--)
             {
                 //What is the best way to calculate coordinates?
                 regions.Add(new Region(this, 0, 0, "test", TerrainType.Fog));
-                numRegions--;
             }
         }
 
