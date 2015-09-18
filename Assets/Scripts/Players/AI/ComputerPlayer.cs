@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Assets.Scripts.AI
+﻿namespace Assets.Scripts.Players.AI
 {
     public class ComputerPlayer : Player
     {

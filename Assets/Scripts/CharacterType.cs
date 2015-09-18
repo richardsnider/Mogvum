@@ -10,10 +10,10 @@ namespace Assets.Scripts
         ICollection<PrimaryType> PrimaryTypes;
         ICollection<SubType> SubTypes;
 
-        CharacterType(ICollection<PrimaryType> primaryTypes, ICollection<SubType> subTypes)
+        public CharacterType(ICollection<PrimaryType> primaryTypes = null, ICollection<SubType> subTypes = null)
         {
-            PrimaryTypes = primaryTypes;
-            SubTypes = subTypes;
+            PrimaryTypes = primaryTypes ?? new List<PrimaryType>();
+            SubTypes = subTypes ?? new List<SubType>();
         }
 
         public ICollection<PrimaryType> GetPrimaryTypes()

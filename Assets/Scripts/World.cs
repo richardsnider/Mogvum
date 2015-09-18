@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 namespace Assets.Scripts
 {
-
-
     public class World
     {
         private Game game;
@@ -55,7 +53,7 @@ namespace Assets.Scripts
             while(numRegions > 0)
             {
                 //What is the best way to calculate coordinates?
-                regions.Add(new Region(this, 0, 0, TerrainType.Normal));
+                regions.Add(new Region(this, 0, 0, "test", TerrainType.Fog));
                 numRegions--;
             }
         }
@@ -65,10 +63,9 @@ namespace Assets.Scripts
             factions.Remove(faction);
         }
 
-        public void MoveCharacter(Region src, Region dst, Character character)
+        public void MoveCharacter(RegionCube src, RegionCube dst, Character character)
         {
-            src.RemoveOccupant(character);
-            dst.AddOccupant(character);
+            src.AddOccupant(dst.RemoveOccupant(character));
         }
     }
 }

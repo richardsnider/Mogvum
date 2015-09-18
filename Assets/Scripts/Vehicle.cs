@@ -1,6 +1,13 @@
-﻿namespace Assets.Scripts
+﻿using Assets.Scripts.Interfaces;
+using System.Collections.Generic;
+
+namespace Assets.Scripts
 {
-    class Vehicle : RegionObject
+    public class Vehicle
     {
+        public Vehicle()
+        {
+
+        }
     }
 }

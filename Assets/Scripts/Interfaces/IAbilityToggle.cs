@@ -4,7 +4,7 @@ namespace Assets.Scripts.Interfaces
 {
     interface IAbilityToggle : IAbility
     {
-        void TurnOn(RegionObject source, ICollection<RegionObject> target);
-        void TurnOff(RegionObject source, ICollection<RegionObject> target);
+        void TurnOn(Character source, ICollection<ITargetable> target);
+        void TurnOff(Character source, ICollection<ITargetable> target);
     }
 }

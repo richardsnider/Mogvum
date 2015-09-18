@@ -2,7 +2,7 @@
 {
     public enum Alchemy
     {
-        Food = 1,
-        HealingPotion = 2
+        Food,
+        HealingPotion
     }
 }

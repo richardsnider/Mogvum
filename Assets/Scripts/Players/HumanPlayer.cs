@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Assets.Scripts.Player
+﻿namespace Assets.Scripts.Players
 {
     public class HumanPlayer : Player
     {

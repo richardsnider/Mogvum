@@ -1,25 +1,32 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
     public class Inventory
     {
-        private int Capacity;
+        private bool bottomless; //RegionCube's have bottomless inventory
+        private int width, length;
         private ICollection<Item> Items;
 
-        public Inventory()
+        public Inventory(int width, int length, bool bottomless = false, ICollection<Item> Items = null)
         {
-            Items = new List<Item>();
+            this.width = width;
+            this.length = length;
+            this.bottomless = bottomless;
+            this.Items = Items ?? new List<Item>();
         }
 
-        public void AddItem(Item item)
+        public bool AddItem(Item item, int x, int y)
         {
             Items.Add(item);
+            return true;
         }
 
-        public void RemoveItem(Item item)
+        public Item RemoveItem(Item item)
         {
             Items.Remove(item);
+            return item;
         }
     }
 }

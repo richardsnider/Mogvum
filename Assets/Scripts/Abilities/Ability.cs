@@ -9,12 +9,12 @@ namespace Assets.Scripts.Abilities
         bool counter;
         //var for special ability vs Item ability vs regular skill ability ?
 
-        public void Perform(RegionObject source, ICollection<RegionObject> targets)
+        public void Perform(Character source, ICollection<ITargetable> targets)
         {
             IEffect effect = new Effect();
             foreach(var target in targets)
             {
-                target.AddEffect(effect);
+                //target.AddEffect(effect);
                 effect.Apply();
             }
         }

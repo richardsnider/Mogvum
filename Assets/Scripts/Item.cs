@@ -1,20 +1,22 @@
 ﻿using Assets.Scripts;
+using Assets.Scripts.Interfaces;
+using System.Collections.Generic;
 
-public class Item : RegionObject
+public class Item
 {
-    private Inventory Inventory;
-    private bool Grippable;
+    Inventory inventory; //Handle to containing inventory.
+    private string name;
+    private bool grippable;
 	private int Weight;
     private int Quantity;
 	private int Value;
 
-    public Item()
+    public Item(RegionCoordinates coordinates, ICollection<IEffect> effects = null, Inventory inventory = null)
     {
-        Inventory = new Inventory();
     }
 
-    public void AddItem(Item item)
+    public string GetName()
     {
-        Inventory.AddItem(item);
+        return name;
     }
 }
