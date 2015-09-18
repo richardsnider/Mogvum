@@ -62,7 +62,10 @@ namespace Assets.Scripts
 
         public void RemoveFaction(Faction faction)
         {
-            factions.Remove(faction);
+            if(factions.Contains(faction))
+            {
+                factions.Remove(faction);
+            }
         }
 
         public void MoveCharacter(RegionCube src, RegionCube dst, Character character)
