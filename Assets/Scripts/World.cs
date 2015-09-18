@@ -15,12 +15,12 @@ namespace Assets.Scripts
             this.factions = factions ?? new List<Faction>();
             this.regions = regions ?? new List<Region>();
 
-            if(factions.Count < 1)
+            if(this.factions.Count < 1)
             {
                 AddFactions(startingFactions);
             }
 
-            if(regions.Count < 1)
+            if(this.regions.Count < 1)
             {
                 AddRegions(startingRegions);
             }
