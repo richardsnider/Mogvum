@@ -9,6 +9,11 @@ public class Region
     
     private string name;
     private TerrainType terrain;
+    private int xSize, ySize, zSize;
+    private int elevation;
+
+    //Region needs a Weather class attribute
+
     private ICollection<RegionCube> cubes;
 
     public Region(World world, int x, int y, string name = null, TerrainType terrain = TerrainType.Fog,
@@ -18,9 +23,9 @@ public class Region
         this.x = x;
         this.y = y;
 
-        this.name = name ?? "generateName";
+        this.name = name ?? "DefaultRegionName";
         this.terrain = terrain;
-        this.cubes = cubes; // ?? GenerateCubes
+        this.cubes = cubes ?? new List<RegionCube>();
     }
 
     public void Day()
