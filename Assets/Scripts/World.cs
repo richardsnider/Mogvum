@@ -9,20 +9,20 @@ namespace Assets.Scripts
         private ICollection<Faction> factions;
         private ICollection<Region> regions;
 
-        private int StartingFactions = 6;
-        private int StartingRegions = 10;
-
-        public World(Game game, ICollection<Faction> factions = null, ICollection<Region> regions = null)
+        public World(Game game, ICollection<Faction> factions = null, ICollection<Region> regions = null, int startingFactions = 1, int startingRegions = 1)
         {
             this.game = game;
-            if (regions != null) {
-                this.factions = factions;
-                this.regions = regions;
-            }
-            else
+            this.factions = factions ?? new List<Faction>();
+            this.regions = regions ?? new List<Region>();
+
+            if(factions.Count < 1)
             {
-                AddFactions(StartingFactions);
-                AddRegions(StartingRegions);
+                AddFactions(startingFactions);
+            }
+
+            if(regions.Count < 1)
+            {
+                AddRegions(startingRegions);
             }
         }
 
@@ -41,6 +41,8 @@ namespace Assets.Scripts
 
         public void AddFactions(int numFactions)
         {
+            if (numFactions < 1) numFactions = 1;
+
             while(numFactions > 0)
             {
                 factions.Add(new Faction(this));
@@ -50,6 +52,8 @@ namespace Assets.Scripts
 
         public void AddRegions(int numRegions)
         {
+            if (numRegions < 1) numRegions = 1;
+
             while(numRegions > 0)
             {
                 //What is the best way to calculate coordinates?
