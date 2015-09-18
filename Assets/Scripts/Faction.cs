@@ -17,7 +17,8 @@ namespace Assets.Scripts
 
         public void AddCharacter(Character character)
         {
-            characters.Add(character);
+            if(!characters.Contains(character))
+                characters.Add(character);
         }
     }
 }
