@@ -10,9 +10,9 @@ namespace Tests
         [TestMethod]
         public void CreateGame()
         {
-            //var game = new Game("Test Game");
+            var game = new Game("Test Game");
 
-            Assert.AreEqual(2, 2);
+            Assert.IsNotNull(game);
         }
     }
 }
