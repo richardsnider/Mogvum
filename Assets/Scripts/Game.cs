@@ -6,20 +6,34 @@ namespace Assets.Scripts
     [Serializable]
     public class Game
     {
-        private string name;
-        private World world;
-        private DateTime lastSaveDate;
+        public Guid Id;
+        private DateTime saveDate;
+        public float GameVersion, PatchNumber;
 
-        public Game(string name, World world = null, DateTime? lastSaveDate = null)
+        public string Name;
+        private World world;
+
+        public Game(Guid id = new Guid(), DateTime? saveDate = null, 
+            float gameVersion = 0, short patchNumber = 0,
+            string name = null, World world = null)
         {
-            this.name = name;
+            this.Id = id;
+            this.saveDate = saveDate ?? DateTime.Now;
+            this.GameVersion = gameVersion;
+            this.PatchNumber = patchNumber;
+
+            this.Name = name;
             this.world = world ?? new World(this);
-            this.lastSaveDate = lastSaveDate ?? DateTime.Now;
         }
 
         public void Play()
         {
             world.Resume();
+        }
+
+        public void UpdateSaveDate()
+        {
+            saveDate = DateTime.Now;
         }
 
     }
