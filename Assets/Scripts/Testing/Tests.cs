@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Utilities;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace Assets.Scripts.Testing
@@ -7,6 +8,7 @@ namespace Assets.Scripts.Testing
     {
         public void GamePersistence()
         {
+            Debug.Log("Beginning GamePersistence test.");
             string gameName = "Test Case Game Name";
             Game game = new Game(name: gameName);
 
@@ -14,7 +16,9 @@ namespace Assets.Scripts.Testing
 
             var loadedGame = Persistence.Load(game.Id);
 
-            Assert.AreEqual(loadedGame.Name, gameName);
+            if (loadedGame.Name == gameName)
+                Debug.Log("GamePersistence test passed.");
+            else Debug.LogError("GamePersistence test failed. Loaded game name is " + loadedGame.Name + ", but should be " + gameName);
         }
     }
 }
