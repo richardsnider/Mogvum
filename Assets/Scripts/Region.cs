@@ -1,35 +1,39 @@
-﻿using Assets.Scripts;
-using Assets.Scripts.Enumerables;
+﻿using Assets.Scripts.Enumerables;
+using System;
 using System.Collections.Generic;
 
-public class Region
+namespace Assets.Scripts
 {
-    private World world;
-    private int x, y;
-    
-    private string name;
-    private TerrainType terrain;
-    private int xSize, ySize, zSize;
-    private int elevation;
-
-    //Region needs a Weather class attribute
-
-    private ICollection<RegionCube> cubes;
-
-    public Region(World world, int x, int y, string name = null, TerrainType terrain = TerrainType.Fog,
-        ICollection<RegionCube> cubes = null)
+    [Serializable]
+    public class Region
     {
-        this.world = world;
-        this.x = x;
-        this.y = y;
+        private World world;
+        private int x, y;
 
-        this.name = name ?? "DefaultRegionName";
-        this.terrain = terrain;
-        this.cubes = cubes ?? new List<RegionCube>();
-    }
+        private string name;
+        private TerrainType terrain;
+        private int xSize, ySize, zSize;
+        private int elevation;
 
-    public void Day()
-    {
-        //Have each character in the region take a turn.
+        //Region needs a Weather class attribute
+
+        private ICollection<RegionCube> cubes;
+
+        public Region(World world, int x, int y, string name = null, TerrainType terrain = TerrainType.Fog,
+            ICollection<RegionCube> cubes = null)
+        {
+            this.world = world;
+            this.x = x;
+            this.y = y;
+
+            this.name = name ?? "DefaultRegionName";
+            this.terrain = terrain;
+            this.cubes = cubes ?? new List<RegionCube>();
+        }
+
+        public void Day()
+        {
+            //Have each character in the region take a turn.
+        }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using Assets.Scripts.Enumerables;
+using System;
 using System.Collections.Generic;
 
 namespace Assets.Scripts
 {
+    [Serializable]
     public class World
     {
         private Game game;

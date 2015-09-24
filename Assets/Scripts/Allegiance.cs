@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Assets.Scripts
 {
+    [Serializable]
     public class Allegiance
     {
         private IDictionary<Guid, int> FactionLoyalty;

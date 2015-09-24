@@ -1,9 +1,9 @@
 ﻿using Assets.Scripts.Enumerables;
-using Assets.Scripts.Interfaces;
-using System.Collections.Generic;
+using System;
 
 namespace Assets.Scripts
 {
+    [Serializable]
     public class CharacterStats
     {
         private Character character;

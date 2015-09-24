@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts.Testing;
 using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Assets.Scripts
 {

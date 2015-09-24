@@ -1,8 +1,8 @@
-﻿using Assets.Scripts.Interfaces;
-using System.Collections.Generic;
+﻿using System;
 
 namespace Assets.Scripts
 {
+    [Serializable]
     public class Vehicle
     {
         public Vehicle()

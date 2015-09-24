@@ -1,22 +1,26 @@
-﻿using Assets.Scripts;
-using Assets.Scripts.Interfaces;
+﻿using Assets.Scripts.Interfaces;
+using System;
 using System.Collections.Generic;
 
-public class Item
+namespace Assets.Scripts
 {
-    Inventory inventory; //Handle to containing inventory.
-    private string name;
-    private bool grippable;
-	private int Weight;
-    private int Quantity;
-	private int Value;
-
-    public Item(RegionCoordinates coordinates, ICollection<IEffect> effects = null, Inventory inventory = null)
+    [Serializable]
+    public class Item
     {
-    }
+        Inventory inventory; //Handle to containing inventory.
+        private string name = "DefaultItemName";
+        private bool grippable;
+        private int Weight;
+        private int Quantity;
+        private int Value;
 
-    public string GetName()
-    {
-        return name;
+        public Item(ICollection<IEffect> effects = null, Inventory inventory = null)
+        {
+        }
+
+        public string GetName()
+        {
+            return name;
+        }
     }
 }

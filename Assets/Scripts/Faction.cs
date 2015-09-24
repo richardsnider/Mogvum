@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Assets.Scripts
 {
+    [Serializable]
     public class Faction
     {
         private World world;

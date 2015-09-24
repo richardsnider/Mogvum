@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Assets.Scripts
 {
+    [Serializable]
     public class Inventory
     {
         private bool bottomless; //RegionCube's have bottomless inventory

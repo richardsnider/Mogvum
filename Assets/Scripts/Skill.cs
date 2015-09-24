@@ -1,10 +1,9 @@
 ﻿using System;
-using Assets.Scripts.Enumerables.Skills;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Assets.Scripts
 {
+    [Serializable]
     public class Skill
     {
         public int[] Alchemy; //Size = (Enum.GetNames(typeof(Alchemy)).Length)
