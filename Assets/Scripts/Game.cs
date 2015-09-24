@@ -19,7 +19,10 @@ namespace Assets.Scripts
             float gameVersion = 0, short patchNumber = 0, ICollection<LogEvent> logEvents = null,
             string name = null, World world = null)
         {
-            this.Id = id;
+            if(id == Guid.Empty)
+                this.Id = Guid.NewGuid();
+            else this.Id = id;
+
             this.saveDate = saveDate ?? DateTime.Now;
             this.GameVersion = gameVersion;
             this.PatchNumber = patchNumber;
