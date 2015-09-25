@@ -1,12 +1,11 @@
 ﻿using Assets.Scripts.Utilities;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace Assets.Scripts.Testing
 {
-    public class Tests
+    public static class Test
     {
-        public void GamePersistence()
+        public static void GamePersistence()
         {
             Debug.Log("Beginning GamePersistence test.");
             string gameName = "Test Case Game Name";
@@ -19,6 +18,19 @@ namespace Assets.Scripts.Testing
             if (loadedGame.Name == gameName)
                 Debug.Log("GamePersistence test passed.");
             else Debug.LogError("GamePersistence test failed. Loaded game name is " + loadedGame.Name + ", but should be " + gameName);
+        }
+
+        public static void GenerateNames()
+        {
+            var names = NameGenerator.CreateNames(numOfNames: 10);
+            string debug = "";
+
+            foreach(var name in names)
+            {
+                debug += name + "\n";
+            }
+
+            Debug.Log("Generated names: " + debug);
         }
     }
 }
