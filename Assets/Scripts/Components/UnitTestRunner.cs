@@ -7,9 +7,10 @@ namespace Assets.Scripts.Components
     {
         void Start()
         {
-            Tests tests = new Tests();
+            Debug.Log("Starting Tests");
 
-            tests.GamePersistence();
+            //Test.GamePersistence();
+            Test.GenerateNames();
 
             Debug.Log("Finished tests");
         }
