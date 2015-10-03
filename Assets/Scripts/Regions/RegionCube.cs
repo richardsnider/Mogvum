@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Assets.Scripts.Characters;
-using Assets.Scripts.Enumerables;
 using Assets.Scripts.Interfaces;
 using Assets.Scripts.Items;
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using Assets.Scripts.Characters;
-using Assets.Scripts.Enumerables;
 using UnityEngine;
 
 namespace Assets.Scripts.Components

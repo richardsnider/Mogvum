@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.Scripts.Enumerables;
 using UnityEngine;
 
 namespace Assets.Scripts.Characters
