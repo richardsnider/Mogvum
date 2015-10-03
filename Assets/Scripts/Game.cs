@@ -19,13 +19,13 @@ namespace Assets.Scripts
             float gameVersion = 0, short patchNumber = 0,
             string name = null, World world = null)
         {
-            this.Id = (id == Guid.Empty) ? Guid.NewGuid() : id;
-            this.SaveDate = saveDate ?? DateTime.Now;
-            this.GameVersion = gameVersion;
-            this.PatchNumber = patchNumber;
+            Id = (id == Guid.Empty) ? Guid.NewGuid() : id;
+            SaveDate = saveDate ?? DateTime.Now;
+            GameVersion = gameVersion;
+            PatchNumber = patchNumber;
 
-            this.Name = name;
-            this.World = world ?? new World(this);
+            Name = name;
+            World = world ?? new World(this);
         }
 
         public void Play()

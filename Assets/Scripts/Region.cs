@@ -7,28 +7,36 @@ namespace Assets.Scripts
     [Serializable]
     public class Region
     {
-        private World world;
-        private int x, y;
+        private World World { get; set; }
+        public int X { get; private set; }
+        public int Y { get; private set; }
 
-        private string name;
-        private TerrainType terrain;
-        private int xSize, ySize, zSize;
-        private int elevation;
+        public string Name { get; private set; }
+        public TerrainType Terrain { get; private set; }
+        public int XSize { get; private set; }
+        public int YSize { get; private set; }
+        public int ZSize { get; private set; }
+        public int Elevation { get; private set; }
 
-        //Region needs a Weather class attribute
+        //Region needs a Weather class property
 
-        private ICollection<RegionCube> cubes;
+        public ICollection<RegionCube> Cubes { get; private set; }
 
         public Region(World world, int x, int y, string name = null, TerrainType terrain = TerrainType.Fog,
+            int xSize = 1000, int ySize = 1000, int zSize = 1000, int elevation = 100,
             ICollection<RegionCube> cubes = null)
         {
-            this.world = world;
-            this.x = x;
-            this.y = y;
+            World = world;
+            X = x;
+            Y = y;
 
-            this.name = name ?? "DefaultRegionName";
-            this.terrain = terrain;
-            this.cubes = cubes ?? new List<RegionCube>();
+            Name = name ?? "DefaultRegionName";
+            Terrain = terrain;
+            XSize = xSize;
+            YSize = ySize;
+            ZSize = zSize;
+            Elevation = elevation;
+            Cubes = cubes ?? new List<RegionCube>();
         }
 
         public void Day()

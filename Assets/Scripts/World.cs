@@ -13,19 +13,15 @@ namespace Assets.Scripts
 
         public World(Game game, ICollection<Faction> factions = null, ICollection<Region> regions = null, int startingFactions = 1, int startingRegions = 1)
         {
-            this.Game = game;
-            this.Factions = factions ?? new List<Faction>();
-            this.Regions = regions ?? new List<Region>();
+            Game = game;
+            Factions = factions ?? new List<Faction>();
+            Regions = regions ?? new List<Region>();
 
-            if(this.Factions.Count < 1)
-            {
+            if(Factions.Count < 1)
                 AddFactions(startingFactions);
-            }
 
-            if(this.Regions.Count < 1)
-            {
+            if(Regions.Count < 1)
                 AddRegions(startingRegions);
-            }
         }
 
         public void Resume()
@@ -65,9 +61,7 @@ namespace Assets.Scripts
         public void RemoveFaction(Faction faction)
         {
             if(Factions.Contains(faction))
-            {
                 Factions.Remove(faction);
-            }
         }
 
         public void MoveCharacter(RegionCube src, RegionCube dst, Character character)
