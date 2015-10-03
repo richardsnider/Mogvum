@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Enumerables
+﻿namespace Assets.Scripts.Characters
 {
     public enum PrimaryType
     {
