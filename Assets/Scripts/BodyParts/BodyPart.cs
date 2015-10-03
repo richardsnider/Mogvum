@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Effects;
-using Assets.Scripts.Interfaces;
 using System.Collections.Generic;
 using Assets.Scripts.Items;
 

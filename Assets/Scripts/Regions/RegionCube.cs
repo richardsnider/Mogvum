@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Assets.Scripts.Characters;
 using Assets.Scripts.Effects;
-using Assets.Scripts.Interfaces;
 using Assets.Scripts.Items;
 
 namespace Assets.Scripts.Regions

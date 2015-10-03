@@ -1,5 +1,4 @@
 ﻿using System;
-using Assets.Scripts.Interfaces;
 using UnityEngine;
 using Assets.Scripts.Abilities;
 

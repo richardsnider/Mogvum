@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Assets.Scripts.Abilities;
 using Assets.Scripts.BodyParts;
-using Assets.Scripts.Interfaces;
 using Assets.Scripts.Regions;
 
 namespace Assets.Scripts.Characters
