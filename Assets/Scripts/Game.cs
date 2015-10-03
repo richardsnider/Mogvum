@@ -7,22 +7,20 @@ namespace Assets.Scripts
     [Serializable]
     public class Game
     {
-        public Guid Id;
-        private DateTime saveDate;
-        public float GameVersion, PatchNumber;
+        public Guid Id { get; private set; }
+        public DateTime SaveDate { get; private set; }
+        public float GameVersion { get; set; }
+        public float PatchNumber { get; set; }
 
-        public string Name;
-        private World world;
+        public string Name { get; private set; }
+        private readonly World world;
 
         public Game(Guid id = new Guid(), DateTime? saveDate = null, 
             float gameVersion = 0, short patchNumber = 0,
             string name = null, World world = null)
         {
-            if(id == Guid.Empty)
-                this.Id = Guid.NewGuid();
-            else this.Id = id;
-
-            this.saveDate = saveDate ?? DateTime.Now;
+            this.Id = (id == Guid.Empty) ? Guid.NewGuid() : id;
+            this.SaveDate = saveDate ?? DateTime.Now;
             this.GameVersion = gameVersion;
             this.PatchNumber = patchNumber;
 
@@ -37,7 +35,7 @@ namespace Assets.Scripts
 
         public void UpdateSaveDate()
         {
-            saveDate = DateTime.Now;
+            SaveDate = DateTime.Now;
         }
 
     }
