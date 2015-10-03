@@ -14,7 +14,7 @@ namespace Assets.Scripts.Abilities
             IEffect effect = new Effect();
             foreach(var target in targets)
             {
-                //target.AddEffect(effect);
+                target.AddEffect(effect);
                 effect.Apply();
             }
         }
