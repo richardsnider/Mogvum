@@ -8,8 +8,8 @@ namespace Assets.Scripts
     public class World
     {
         private Game Game { get; set; }
-        public ICollection<Faction> Factions { get; set; }
-        public ICollection<Region> Regions { get; set; }
+        public ICollection<Faction> Factions { get; private set; }
+        public ICollection<Region> Regions { get; private set; }
 
         public World(Game game, ICollection<Faction> factions = null, ICollection<Region> regions = null, int startingFactions = 1, int startingRegions = 1)
         {
