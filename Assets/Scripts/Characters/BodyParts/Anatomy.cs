@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Assets.Scripts.BodyParts
+namespace Assets.Scripts.Characters.BodyParts
 {
     public class Anatomy
     {

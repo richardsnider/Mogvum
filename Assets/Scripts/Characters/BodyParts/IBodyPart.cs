@@ -1,6 +1,6 @@
 ﻿using Assets.Scripts.Items;
 
-namespace Assets.Scripts.BodyParts
+namespace Assets.Scripts.Characters.BodyParts
 {
     public interface IBodyPart
     {

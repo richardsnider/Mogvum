@@ -1,8 +1,8 @@
-﻿using Assets.Scripts.Effects;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Assets.Scripts.Effects;
 using Assets.Scripts.Items;
 
-namespace Assets.Scripts.BodyParts
+namespace Assets.Scripts.Characters.BodyParts
 {
     public class BodyPart : IBodyPart
     {
