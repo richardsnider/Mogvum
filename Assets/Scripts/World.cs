@@ -7,22 +7,22 @@ namespace Assets.Scripts
     [Serializable]
     public class World
     {
-        private Game game;
-        private ICollection<Faction> factions;
-        private ICollection<Region> regions;
+        private Game Game { get; }
+        public ICollection<Faction> Factions { get; }
+        public ICollection<Region> Regions { get; }
 
         public World(Game game, ICollection<Faction> factions = null, ICollection<Region> regions = null, int startingFactions = 1, int startingRegions = 1)
         {
-            this.game = game;
-            this.factions = factions ?? new List<Faction>();
-            this.regions = regions ?? new List<Region>();
+            this.Game = game;
+            this.Factions = factions ?? new List<Faction>();
+            this.Regions = regions ?? new List<Region>();
 
-            if(this.factions.Count < 1)
+            if(this.Factions.Count < 1)
             {
                 AddFactions(startingFactions);
             }
 
-            if(this.regions.Count < 1)
+            if(this.Regions.Count < 1)
             {
                 AddRegions(startingRegions);
             }
@@ -30,7 +30,7 @@ namespace Assets.Scripts
 
         public void Resume()
         {
-            foreach(var region in regions)
+            foreach(var region in Regions)
             {
                 region.Day();
             }
@@ -47,7 +47,7 @@ namespace Assets.Scripts
 
             for(; numFactions > 0; numFactions--)
             {
-                factions.Add(new Faction(this));
+                Factions.Add(new Faction(this));
             }
         }
 
@@ -58,15 +58,15 @@ namespace Assets.Scripts
             for(; numRegions > 0; numRegions--)
             {
                 //What is the best way to calculate coordinates?
-                regions.Add(new Region(this, 0, 0, "test", TerrainType.Fog));
+                Regions.Add(new Region(this, 0, 0, "test", TerrainType.Fog));
             }
         }
 
         public void RemoveFaction(Faction faction)
         {
-            if(factions.Contains(faction))
+            if(Factions.Contains(faction))
             {
-                factions.Remove(faction);
+                Factions.Remove(faction);
             }
         }
 

@@ -13,7 +13,7 @@ namespace Assets.Scripts
         public float PatchNumber { get; set; }
 
         public string Name { get; private set; }
-        private readonly World world;
+        private World World { get; }
 
         public Game(Guid id = new Guid(), DateTime? saveDate = null, 
             float gameVersion = 0, short patchNumber = 0,
@@ -25,12 +25,12 @@ namespace Assets.Scripts
             this.PatchNumber = patchNumber;
 
             this.Name = name;
-            this.world = world ?? new World(this);
+            this.World = world ?? new World(this);
         }
 
         public void Play()
         {
-            world.Resume();
+            World.Resume();
         }
 
         public void UpdateSaveDate()
