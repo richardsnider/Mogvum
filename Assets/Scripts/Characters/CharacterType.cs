@@ -8,13 +8,17 @@ namespace Assets.Scripts.Characters
     [Serializable]
     public class CharacterType
     {
-        ICollection<PrimaryType> PrimaryTypes;
-        ICollection<SubType> SubTypes;
+        private Character Character { get; set; }
+        public ICollection<PrimaryType> PrimaryTypes { get; private set; }
+        public ICollection<SubType> SubTypes { get; private set; }
+        public CharacterSize Size { get; private set; }
 
-        public CharacterType(ICollection<PrimaryType> primaryTypes = null, ICollection<SubType> subTypes = null)
+        public CharacterType(Character character, ICollection<PrimaryType> primaryTypes = null, ICollection<SubType> subTypes = null, CharacterSize size = CharacterSize.Medium)
         {
+            Character = character;
             PrimaryTypes = primaryTypes ?? new List<PrimaryType>();
             SubTypes = subTypes ?? new List<SubType>();
+            Size = size;
         }
 
         public ICollection<PrimaryType> GetPrimaryTypes()

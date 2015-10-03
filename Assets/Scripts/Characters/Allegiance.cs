@@ -6,11 +6,13 @@ namespace Assets.Scripts.Characters
     [Serializable]
     public class Allegiance
     {
-        private IDictionary<Guid, int> FactionLoyalty;
+        private Character Character { get; set; }
+        private IDictionary<Guid, int> FactionLoyalty { get; set; }
         private int contentment;
 
-        public Allegiance()
+        public Allegiance(Character character)
         {
+            Character = character;
             FactionLoyalty = new Dictionary<Guid, int>();
         }
 

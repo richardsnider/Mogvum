@@ -60,7 +60,7 @@ namespace Assets.Scripts.Regions
 
         public bool AddOccupant(Character character)
         {
-            if ((character.Stats.Size <= CharacterSize.Tiny || Occupants.Count == 0)
+            if ((character.Type.Size <= CharacterSize.Tiny || Occupants.Count == 0)
                 && !Occupants.Contains(character))
             {
                 Occupants.Add(character);
