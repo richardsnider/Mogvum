@@ -1,8 +1,10 @@
-﻿using Assets.Scripts.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Assets.Scripts.BodyParts;
+using Assets.Scripts.Interfaces;
+using Assets.Scripts.Regions;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Characters
 {
     [Serializable]
     public class Character

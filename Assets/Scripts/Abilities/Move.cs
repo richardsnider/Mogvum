@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.Scripts.Characters;
 using Assets.Scripts.Interfaces;
+using Assets.Scripts.Regions;
 using UnityEngine;
 
 namespace Assets.Scripts.Abilities

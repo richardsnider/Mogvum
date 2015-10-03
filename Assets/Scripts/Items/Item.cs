@@ -1,8 +1,8 @@
-﻿using Assets.Scripts.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Assets.Scripts.Interfaces;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Items
 {
     [Serializable]
     public class Item

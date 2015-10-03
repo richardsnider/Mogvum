@@ -1,9 +1,9 @@
-﻿using UnityEngine;
-using Assets.Scripts.Enumerables;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using Assets.Scripts.Enumerables;
+using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Characters
 {
     [Serializable]
     public class CharacterType

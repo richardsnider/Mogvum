@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Characters
 {
     [Serializable]
     public class Skill

@@ -1,6 +1,9 @@
 ﻿using Assets.Scripts.Enumerables;
 using System;
 using System.Collections.Generic;
+using Assets.Scripts.Characters;
+using Assets.Scripts.Players;
+using Assets.Scripts.Regions;
 
 namespace Assets.Scripts
 {

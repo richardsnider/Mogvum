@@ -1,4 +1,6 @@
-﻿namespace Assets.Scripts.Interfaces
+﻿using Assets.Scripts.Items;
+
+namespace Assets.Scripts.Interfaces
 {
     public interface IBodyPart
     {

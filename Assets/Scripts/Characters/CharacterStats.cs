@@ -1,7 +1,7 @@
-﻿using Assets.Scripts.Enumerables;
-using System;
+﻿using System;
+using Assets.Scripts.Enumerables;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Characters
 {
     [Serializable]
     public class CharacterStats

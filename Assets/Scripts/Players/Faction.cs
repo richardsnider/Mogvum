@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.Scripts.Characters;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Players
 {
     [Serializable]
     public class Faction

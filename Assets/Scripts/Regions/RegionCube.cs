@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
+using Assets.Scripts.Characters;
 using Assets.Scripts.Enumerables;
 using Assets.Scripts.Interfaces;
-using System;
+using Assets.Scripts.Items;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Regions
 {
     [Serializable]
     public class RegionCube

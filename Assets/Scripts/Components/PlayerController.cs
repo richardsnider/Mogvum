@@ -1,27 +1,30 @@
-﻿using UnityEngine;
+﻿using System;
 using Assets.Scripts.Enumerables;
-using System;
+using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+namespace Assets.Scripts.Components
 {
-    public float speed;
-    private Rigidbody rb;
-
-    void Start()
+    public class PlayerController : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody>();
-        Debug.Log("Player controller initialized start function.");
-        Debug.LogError("Character's PrimaryTypes already contains " + Enum.GetName(typeof(PrimaryType), 2) + ".");
-        Debug.Log("Player controller has finished start function.");
-    }
+        public float speed;
+        private Rigidbody rb;
 
-    void FixedUpdate()
-    {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        void Start()
+        {
+            rb = GetComponent<Rigidbody>();
+            Debug.Log("Player controller initialized start function.");
+            Debug.LogError("Character's PrimaryTypes already contains " + Enum.GetName(typeof(PrimaryType), 2) + ".");
+            Debug.Log("Player controller has finished start function.");
+        }
 
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        void FixedUpdate()
+        {
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            float moveVertical = Input.GetAxis("Vertical");
 
-        rb.AddForce(movement * speed);
+            Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+
+            rb.AddForce(movement * speed);
+        }
     }
 }

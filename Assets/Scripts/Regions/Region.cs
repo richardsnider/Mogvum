@@ -1,8 +1,8 @@
-﻿using Assets.Scripts.Enumerables;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Assets.Scripts.Enumerables;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Regions
 {
     [Serializable]
     public class Region

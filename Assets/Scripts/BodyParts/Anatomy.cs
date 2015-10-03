@@ -1,7 +1,7 @@
-﻿using Assets.Scripts.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Assets.Scripts.Interfaces;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.BodyParts
 {
     public class Anatomy
     {
