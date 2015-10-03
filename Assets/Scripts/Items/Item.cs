@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.Scripts.Effects;
 using Assets.Scripts.Interfaces;
 
 namespace Assets.Scripts.Items
