@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.Testing;
-using System;
-using System.Collections.Generic;
+﻿using System;
 
 namespace Assets.Scripts
 {
