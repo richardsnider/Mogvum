@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using Assets.Scripts.Characters;
+using Assets.Scripts.Interfaces;
 
-namespace Assets.Scripts.Interfaces
+namespace Assets.Scripts.Abilities
 {
     public interface IAbility
     {
