@@ -12,7 +12,6 @@ namespace Assets.Scripts.Effects
         private bool IsStackable = false; //This needs to be fixed I think . . . .
         private ITargetable Target; //Need to fix this too . . . 
         private IAbility Source;
-        private TargetType TargetType;
         private int Duration; //If Permanent this will be 0 or -1?
 
         public void Apply()
