@@ -6,16 +6,17 @@ namespace Assets.Scripts.Items
     [Serializable]
     public class Inventory
     {
-        private bool bottomless; //RegionCube's have bottomless inventory
-        private int width, length;
-        private ICollection<Item> Items;
+        public int Width { get; private set; }
+        public int Length { get; private set; }
+        public bool Bottomless { get; private set; } //A region cube has infinite inventory.
+        public ICollection<Item> Items { get; private set; }
 
-        public Inventory(int width, int length, bool bottomless = false, ICollection<Item> Items = null)
+        public Inventory(int width, int length, bool bottomless = false, ICollection<Item> items = null)
         {
-            this.width = width;
-            this.length = length;
-            this.bottomless = bottomless;
-            this.Items = Items ?? new List<Item>();
+            Width = width;
+            Length = length;
+            Bottomless = bottomless;
+            Items = items ?? new List<Item>();
         }
 
         public bool AddItem(Item item, int x, int y)
