@@ -25,7 +25,7 @@ namespace Assets.Scripts.Characters
             Titles = titles ?? new CharacterTitles(this);
             Allegiance = allegiance ?? new Allegiance(this);
             Type = type ?? new CharacterType(this);
-            Anatomy = anatomy ?? new Anatomy();
+            Anatomy = anatomy ?? new Anatomy(this);
             Skill = skill ?? new Skill();
             MaxActionPoints = 10;
             ActionPoints = 10;
