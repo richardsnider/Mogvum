@@ -1,8 +1,10 @@
-﻿namespace Assets.Scripts.Items
+﻿using System;
+using Assets.Scripts.Regions;
+
+namespace Assets.Scripts.Items
 {
-    interface IHasInventory
+    public interface IHasInventory
     {
-        void AddItem();
-        void RemoveItem();
+        RegionCube Cube { get; }
     }
 }

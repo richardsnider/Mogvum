@@ -1,34 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Assets.Scripts.Items
 {
     [Serializable]
     public class Inventory
     {
-        public int Width { get; private set; }
-        public int Length { get; private set; }
-        public bool Bottomless { get; private set; } //A region cube has infinite inventory.
+        public IHasInventory Holder { get; private set; }
         public ICollection<Item> Items { get; private set; }
+        public int Gold { get; private set; }
 
-        public Inventory(int width, int length, bool bottomless = false, ICollection<Item> items = null)
+        public Inventory(IHasInventory holder, ICollection<Item> items = null, int gold = 0)
         {
-            Width = width;
-            Length = length;
-            Bottomless = bottomless;
+            Holder = holder;
             Items = items ?? new List<Item>();
+            Gold = (gold < 0) ? 0 : gold;
         }
 
-        public bool AddItem(Item item, int x, int y)
+        public bool AddItem(Item item)
         {
+            if (Items.Contains(item)) return false;
+
             Items.Add(item);
             return true;
         }
 
         public Item RemoveItem(Item item)
         {
+            if (!Items.Contains((item))) return null;
+
             Items.Remove(item);
             return item;
+        }
+
+        public List<Item> GetItemsByName(string name)
+        {
+            return Items.Where(i => i.Name == name).ToList();
         }
     }
 }
