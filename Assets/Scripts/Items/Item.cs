@@ -1,26 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using Assets.Scripts.Effects;
 
 namespace Assets.Scripts.Items
 {
     [Serializable]
     public class Item
     {
-        Inventory inventory; //Handle to containing inventory.
-        private string name = "DefaultItemName";
-        private bool grippable;
-        private int Weight;
-        private int Quantity;
-        private int Value;
+        protected Inventory ContainingInventory { get; set; } //Handle to containing ContainingInventory.
+        public string Name { get; private set; }
+        public int Weight { get; private set; }
+        public int Size { get; private set; }
+        public Condition Condition { get; set; }
+        public bool Equippable { get; private set; }
 
-        public Item(ICollection<IEffect> effects = null, Inventory inventory = null)
+        public Item(Inventory containingInventory, string name = null, int weight = 0, int size = 0, Condition condition = null, bool equippable = false)
         {
-        }
-
-        public string GetName()
-        {
-            return name;
+            ContainingInventory = containingInventory;
+            Name = name;
+            Weight = (weight < 0) ? 0 : weight;
+            Size = (size < 0) ? 0 : size;
+            Condition = condition ?? new Condition(this);
+            Equippable = equippable;
         }
     }
 }
