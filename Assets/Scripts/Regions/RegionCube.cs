@@ -7,7 +7,7 @@ using Assets.Scripts.Items;
 namespace Assets.Scripts.Regions
 {
     [Serializable]
-    public class RegionCube
+    public class RegionCube : IHasInventory
     {
         private Region Region { get; set; }
         public int X { get; private set; }
@@ -30,7 +30,7 @@ namespace Assets.Scripts.Regions
             Matter = matter;
             Effects = effects ?? new List<IEffect>();
             Occupants = occupants ?? new List<Character>();
-            Inventory = inventory ?? new Inventory(0, 0, true);
+            Inventory = inventory ?? new Inventory(this);
             Cover = cover;
             Lighting = lighting;
         }
@@ -59,7 +59,7 @@ namespace Assets.Scripts.Regions
 
         public bool AddOccupant(Character character)
         {
-            if ((character.Type.Size <= CharacterSize.Tiny || Occupants.Count == 0)
+            if ((character.Anatomy.Size <= CharacterSize.Tiny || Occupants.Count == 0)
                 && !Occupants.Contains(character))
             {
                 Occupants.Add(character);
@@ -78,6 +78,11 @@ namespace Assets.Scripts.Regions
             }
 
             return null;
+        }
+
+        public RegionCube Cube
+        {
+            get { return this; }
         }
     }
 }
