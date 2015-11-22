@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using Assets.Scripts.Abilities;
 using Assets.Scripts.Characters.BodyParts;
 using Assets.Scripts.Regions;
 
@@ -9,36 +7,29 @@ namespace Assets.Scripts.Characters
     [Serializable]
     public class Character
     {
-        private RegionCube Cube { get; set; }
-        private CharacterTitles Titles { get; set; }
+        public RegionCube Cube { get; private set; }
+        public CharacterTitles Titles { get; private set; }
         public Allegiance Allegiance { get; private set; }
         public CharacterType Type { get; private set; }
         public Anatomy Anatomy { get; private set; }
         public Skill Skill { get; private set; }
-        private int ActionPoints { get; set; }
-        private int MaxActionPoints { get; set; }
+        public ActionPoints ActionPoints { get; private set; }
 
         public Character(RegionCube cube, CharacterTitles titles = null, Allegiance allegiance = null, CharacterType type = null,
-           Anatomy anatomy = null, Skill skill = null)
+           Anatomy anatomy = null, Skill skill = null, ActionPoints actionPoints = null)
         {
             Cube = cube;
-            Titles = titles ?? new CharacterTitles(this);
+            Titles = titles ?? new CharacterTitles();
             Allegiance = allegiance ?? new Allegiance(this);
             Type = type ?? new CharacterType(this);
             Anatomy = anatomy ?? new Anatomy(this);
             Skill = skill ?? new Skill();
-            MaxActionPoints = 10;
-            ActionPoints = 10;
+            ActionPoints = actionPoints ?? new ActionPoints(this);
         }
 
-        public void TakeTurn()
+        public void Destroy()
         {
-            
-        }
-
-        public void UseAbility(IAbility ability, ICollection<object> targets)
-        {
-
+            Cube.RemoveOccupant(this);
         }
     }
 }

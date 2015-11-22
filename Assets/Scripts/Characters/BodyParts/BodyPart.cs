@@ -1,33 +1,68 @@
-﻿using System.Collections.Generic;
-using Assets.Scripts.Effects;
-using Assets.Scripts.Items;
+﻿using Assets.Scripts.Items;
+using Assets.Scripts.Regions;
 
 namespace Assets.Scripts.Characters.BodyParts
 {
-    public class BodyPart : IBodyPart
+    public class BodyPart : IHasInventory
     {
-        private ICollection<Item> EquippedItems;
-        private bool Grip;
-        private int Life, MaxLife, LifeRegen;
-        private int Energy, MaxEnergy, EnergyRegen;
+        protected Anatomy Anatomy { get; set; }
 
-        ICollection<Effect> Effects; //Is this redundant? I feel like you should be able to add an effect to a body part specifically.
-        private bool Spectral; //Life can be zero.
-        private int Soul, MaxSoul, SoulRegen; //Because what if you have an arm made of fire or something crazy like that. Or what if you have a bionic arm?
+        public bool IsVital { get; private set; }
+        public bool IsMechanical { get; private set; }
+        public bool IsSpectral { get; private set; }
 
-        public BodyPart()
+        public Life Life { get; private set; }
+        public Energy Energy { get; private set; }
+        public Soul Soul { get; private set; }
+
+        public InventoryLimited Inventory { get; private set;  }
+
+        public BodyPart(Anatomy anatomy, bool isVital = false, bool isMechanical = false, bool isSpectral = false, Life life = null, Energy energy = null, Soul soul = null, InventoryLimited inventory = null)
         {
-            EquippedItems = new List<Item>();
+            Anatomy = anatomy;
+
+            IsVital = isVital;
+            IsMechanical = isMechanical;
+            IsSpectral = isSpectral;
+
+            Life = life ?? new Life(this);
+            Soul = soul ?? new Soul(this);
+            Energy = energy ?? new Energy(this);
+
+            Inventory = inventory ?? new InventoryLimited(this);
         }
 
-        public void EquipItem(Item item)
+        public void Destroy()
         {
-            EquippedItems.Add(item);
+            if (IsVital) Anatomy.SpectralizeBodyParts();
+            else Itemize();
         }
 
-        public void UnEquipItem(Item item)
+        public void Itemize()
         {
-            EquippedItems.Remove(item);
+            var inventory = Cube.Inventory;
+            inventory.AddItem(new Item(inventory, GetType() + " of " + Anatomy.Character.Titles.Default));
+        }
+
+        public void Spectralize()
+        {
+            IsSpectral = true;
+        }
+
+        public bool IsLimb
+        {
+            get
+            {
+                if (GetType() == typeof (Leg) || GetType() == typeof(Fin) 
+                    || GetType() == typeof(Wing) || GetType() == typeof(Arm)) return true;
+
+                return false;
+            }
+        }
+
+        public RegionCube Cube
+        {
+            get { return Anatomy.Character.Cube; }
         }
     }
 }
