@@ -30,10 +30,12 @@
         Small,
         Stingered,
         Stone,
-        Vampire,
+        Spectral,
+        Vampiric,
         Water,
         Were,
         Winged,
+        Undead,
         Zombie
     }
 }
