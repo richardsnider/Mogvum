@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Items;
+﻿using Assets.Scripts.Effects;
+using Assets.Scripts.Items;
 using Assets.Scripts.Regions;
 
 namespace Assets.Scripts.Characters.BodyParts
