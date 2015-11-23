@@ -16,6 +16,8 @@ namespace Assets.Scripts.Characters
         public int Vitality { get; private set; }
 
         public CarryWeight CarryWeight { get; set; }
+        public bool IsRespiratory { get; set; }
+        public bool IsAquatic { get; set; }
         public CharacterSize Size { get; private set; }
         public ICollection<BodyPart> BodyParts { get; private set; }
 
