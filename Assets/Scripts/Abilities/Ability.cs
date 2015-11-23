@@ -11,12 +11,10 @@ namespace Assets.Scripts.Abilities
 
         public void Perform(Character source, ICollection<ITargetable> targets)
         {
-            IEffect effect = new Effect();
-            foreach(var target in targets)
-            {
-                target.AddEffect(effect);
-                effect.Apply();
-            }
+            //foreach(var target in targets)
+            //{
+            //    //target.addeffect
+            //}
         }
     }
 }
