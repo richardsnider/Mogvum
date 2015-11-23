@@ -9,25 +9,25 @@ namespace Assets.Scripts.Characters
         public Character Character { get; private set; }
 
         //Strength affects MaxLife, MaxCarryWeight, and melee/ranged abilities.
-        //It is determined by an energy usage to CarryWeight ratio.
+        //It is determined by an energy usage to Encumbrance ratio.
         public int Strength { get; private set; }
         //Vitality affects LifeRegen, MaxEnergy, and EnergyRegen.
         //It is determined by energy usage.
         public int Vitality { get; private set; }
 
-        public CarryWeight CarryWeight { get; set; }
         public bool IsRespiratory { get; set; }
         public bool IsAquatic { get; set; }
+        public Encumbrance Encumbrance { get; set; }
         public CharacterSize Size { get; private set; }
         public ICollection<BodyPart> BodyParts { get; private set; }
 
-        public Anatomy(Character character, int strength = 0, int vitality = 0, CarryWeight carryWeight = null, CharacterSize size = CharacterSize.Medium, ICollection<BodyPart> bodyParts = null)
+        public Anatomy(Character character, int strength = 0, int vitality = 0, Encumbrance encumbrance = null, CharacterSize size = CharacterSize.Medium, ICollection<BodyPart> bodyParts = null)
         {
             Character = character;
             Strength = strength;
             Vitality = vitality;
             Size = size;
-            CarryWeight = carryWeight ?? new CarryWeight();
+            Encumbrance = encumbrance ?? new Encumbrance();
             BodyParts = bodyParts ?? new List<BodyPart>();
         }
 
