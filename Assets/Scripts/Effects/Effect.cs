@@ -1,33 +1,80 @@
-﻿using System;
-using UnityEngine;
-using Assets.Scripts.Abilities;
+﻿using Assets.Scripts.Abilities;
+using Assets.Scripts.Characters;
+using Assets.Scripts.Characters.BodyParts;
+using Assets.Scripts.Items;
+using Assets.Scripts.Regions;
 
 namespace Assets.Scripts.Effects
 {
-    public class Effect : IEffect
+    public abstract class Effect : IEffect
     {
-        protected string Name;
-        private bool IsStackable = false; //This needs to be fixed I think . . . .
-        private ITargetable Target; //Need to fix this too . . . 
-        private IAbility Source;
-        private int Duration; //If Permanent this will be 0 or -1?
+        public IAbility Source;
+        public string Name { get; set; }
+        public bool IsStackable { get; set; }
 
-        public void Apply()
+        protected Effect(IAbility source, string name = "Default Effect Name", bool isStackable = false)
         {
+            Source = source;
+            Name = name;
+            IsStackable = isStackable;
         }
 
-        public void UnApply()
+        public void Apply() { }
+        public void UnApply() { }
+    }
+
+    public class CharacterEffect : Effect
+    {
+        public Character Character { get; set; }
+
+        public CharacterEffect(Character character, IAbility source, string name = "Default Effect Name", bool isStackable = false) : base(source, name, isStackable)
         {
+            Character = character;
+        }
+    }
+
+    public class BodyPartEffect : Effect
+    {
+        public BodyPart BodyPart { get; set; }
+
+        public BodyPartEffect(BodyPart bodyPart, IAbility source, string name = "Default Effect Name", bool isStackable = false) : base(source, name, isStackable)
+        {
+            BodyPart = bodyPart;
+        }
+    }
+
+    public class AlterLife : BodyPartEffect
+    {
+        public int Amount { get; set; }
+
+        public AlterLife(int amount, BodyPart bodyPart, IAbility source, string name = "Default Effect Name", bool isStackable = false) : base(bodyPart, source, name, isStackable)
+        {
+            Amount = amount;
         }
 
-        public string GetName()
+        public new void Apply()
         {
-            return Name;
+            BodyPart.Life.Current += Amount;
         }
+    }
 
-        public bool CanStack()
+    public class RegionCubeEffect : Effect
+    {
+        public RegionCube RegionCube { get; set; }
+
+        public RegionCubeEffect(RegionCube regionCube, IAbility source, string name = "Default Effect Name", bool isStackable = false) : base(source, name, isStackable)
         {
-            return IsStackable;
+            RegionCube = regionCube;
+        }
+    }
+
+    public class ItemEffect : Effect
+    {
+        public Item Item { get; set; }
+
+        public ItemEffect(Item item, IAbility source, string name = "Default Effect Name", bool isStackable = false) : base(source, name, isStackable)
+        {
+            Item = item;
         }
     }
 }
