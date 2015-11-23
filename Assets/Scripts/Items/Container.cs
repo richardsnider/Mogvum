@@ -13,14 +13,14 @@ namespace Assets.Scripts.Items
         }
 
         public Container(Inventory containingInventory, string name = null, int weight = 0, int size = 0,
-            Condition condition = null, bool equippable = false, Inventory inventory = null)
+            Condition condition = null, bool isEquipment = false, Inventory inventory = null)
             : base(
                 containingInventory: containingInventory,
                 name: name,
                 weight: weight,
                 size: size,
                 condition: condition,
-                equippable: equippable
+                isEquipment: isEquipment
                 )
         {
             Inventory = inventory ?? new Inventory(this);
