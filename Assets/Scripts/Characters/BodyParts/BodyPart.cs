@@ -14,10 +14,11 @@ namespace Assets.Scripts.Characters.BodyParts
         public Life Life { get; private set; }
         public Energy Energy { get; private set; }
         public Soul Soul { get; private set; }
+        public Resistance Resistance { get; private set; }
 
         public InventoryLimited Inventory { get; private set;  }
 
-        public BodyPart(Anatomy anatomy, bool isVital = false, bool isMechanical = false, bool isSpectral = false, Life life = null, Energy energy = null, Soul soul = null, InventoryLimited inventory = null)
+        public BodyPart(Anatomy anatomy, bool isVital = false, bool isMechanical = false, bool isSpectral = false, Life life = null, Energy energy = null, Soul soul = null, Resistance resistance = null, InventoryLimited inventory = null)
         {
             Anatomy = anatomy;
 
@@ -28,6 +29,7 @@ namespace Assets.Scripts.Characters.BodyParts
             Life = life ?? new Life(this);
             Soul = soul ?? new Soul(this);
             Energy = energy ?? new Energy(this);
+            Resistance = resistance ?? new Resistance();
 
             Inventory = inventory ?? new InventoryLimited(this);
         }
