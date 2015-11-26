@@ -17,4 +17,15 @@ namespace Assets.Scripts.Abilities
             //}
         }
     }
+
+    public interface IAbility
+    {
+        void Perform(Character source, ICollection<ITargetable> targets);
+    }
+
+    interface IAbilityToggle : IAbility
+    {
+        void TurnOn(Character source, ICollection<ITargetable> target);
+        void TurnOff(Character source, ICollection<ITargetable> target);
+    }
 }
