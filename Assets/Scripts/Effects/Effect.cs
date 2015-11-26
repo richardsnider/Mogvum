@@ -6,6 +6,14 @@ using Assets.Scripts.Regions;
 
 namespace Assets.Scripts.Effects
 {
+    public interface IEffect
+    {
+        bool IsStackable { get; set; }
+        string Name { get; set; }
+        void Apply();
+        void UnApply();
+    }
+
     public abstract class Effect : IEffect
     {
         public IAbility Source;
@@ -40,21 +48,6 @@ namespace Assets.Scripts.Effects
         public BodyPartEffect(BodyPart bodyPart, IAbility source, string name = "Default Effect Name", bool isStackable = false) : base(source, name, isStackable)
         {
             BodyPart = bodyPart;
-        }
-    }
-
-    public class AlterLife : BodyPartEffect
-    {
-        public int Amount { get; set; }
-
-        public AlterLife(int amount, BodyPart bodyPart, IAbility source, string name = "Default Effect Name", bool isStackable = false) : base(bodyPart, source, name, isStackable)
-        {
-            Amount = amount;
-        }
-
-        public new void Apply()
-        {
-            BodyPart.Life.Current += Amount;
         }
     }
 
