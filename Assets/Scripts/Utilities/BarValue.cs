@@ -22,8 +22,8 @@
             get { return max; }
             set
             {
-                if (value <= 0) max = 0;
-                if (value <= current) current = max;
+                if (value <= 0) current = max = 0;
+                else if (value <= current) current = max = value;
             }
         }
 
