@@ -31,19 +31,28 @@ namespace Assets.Scripts.Effects
         public void UnApply() { }
     }
 
-    public class CharacterEffect : Effect
+    public interface ICharacterEffect : IEffect
     {
-        public Character Character { get; set; }
+        Character Character { get; }
+    }
 
-        public CharacterEffect(Character character, IAbility source, string name = "Default Effect Name", bool isStackable = false) : base(source, name, isStackable)
+    public class CharacterEffect : Effect, ICharacterEffect
+    {
+        public Character Character { get; protected set; }
+
+        public CharacterEffect(IAbility source, string name = "Default Effect Name", bool isStackable = false) : base(source, name, isStackable)
         {
-            Character = character;
         }
     }
 
-    public class BodyPartEffect : Effect
+    public interface IBodyPartEffect : IEffect
     {
-        public BodyPart BodyPart { get; set; }
+        BodyPart BodyPart { get; }
+    }
+
+    public class BodyPartEffect : Effect, IBodyPartEffect
+    {
+        public BodyPart BodyPart { get; protected set; }
 
         public BodyPartEffect(BodyPart bodyPart, IAbility source, string name = "Default Effect Name", bool isStackable = false) : base(source, name, isStackable)
         {
@@ -51,9 +60,14 @@ namespace Assets.Scripts.Effects
         }
     }
 
-    public class RegionCubeEffect : Effect
+    public interface IRegionCubeEffect : IEffect
     {
-        public RegionCube RegionCube { get; set; }
+        RegionCube RegionCube { get; }
+    }
+
+    public class RegionCubeEffect : Effect, IRegionCubeEffect
+    {
+        public RegionCube RegionCube { get; protected set; }
 
         public RegionCubeEffect(RegionCube regionCube, IAbility source, string name = "Default Effect Name", bool isStackable = false) : base(source, name, isStackable)
         {
@@ -61,9 +75,14 @@ namespace Assets.Scripts.Effects
         }
     }
 
-    public class ItemEffect : Effect
+    public interface IItemEffect : IEffect
     {
-        public Item Item { get; set; }
+        Item Item { get; }
+    }
+
+    public class ItemEffect : Effect, IItemEffect
+    {
+        public Item Item { get; protected set; }
 
         public ItemEffect(Item item, IAbility source, string name = "Default Effect Name", bool isStackable = false) : base(source, name, isStackable)
         {
