@@ -1,92 +1,76 @@
-﻿using Assets.Scripts.Abilities;
-using Assets.Scripts.Characters;
-using Assets.Scripts.Characters.BodyParts;
-using Assets.Scripts.Items;
-using Assets.Scripts.Regions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace Assets.Scripts.Effects
 {
-    public interface IEffect
+    /// <summary>
+    /// This is a marker interface indicating the type is a valid effect source.
+    /// </summary>
+    public interface IEffectSource { }
+
+    /// <summary>
+    /// Indicates that a type has a collection of effects. All of which have the same target type.
+    /// </summary>
+    /// <typeparam name="T">The effect target type.</typeparam>
+    public interface IEffectTarget<T> where T : IEffectTarget<T>
     {
-        bool IsStackable { get; set; }
-        string Name { get; set; }
+        ICollection<IEffect<T>> Effects { get; set; }
+        void AddEffect(IEffect<T> effect);
+        void RemoveEffect(IEffect<T> effect);
+    }
+
+    /// <summary>
+    /// Provides functionality of an effect.
+    /// </summary>
+    public interface IEffect<T>
+    {
+        IEffectSource Source { get; set; }
+        T Target { get; set; }
+        bool IsStackable { get; }
+        void Validate();
         void Apply();
         void UnApply();
     }
 
-    public abstract class Effect : IEffect
+    /// <summary>
+    /// Abstract class for more specific effects to inherit from.
+    /// </summary>
+    /// <typeparam name="TTarget">Any type that implements IEffectTarget of its own type.</typeparam>
+    public abstract class Effect<TTarget> : IEffect<TTarget>
+        where TTarget : IEffectTarget<TTarget>
     {
-        public IAbility Source;
-        public string Name { get; set; }
-        public bool IsStackable { get; set; }
+        public IEffectSource Source { get; set; }
+        public TTarget Target { get; set; }
+        public bool IsStackable { get; private set; }
+        public ICollection<Func<bool>> Conditions { get; set; }
+        public Expression Expression { get; set; }
 
-        protected Effect(IAbility source, string name = "Default Effect Name", bool isStackable = false)
+        protected Effect(IEffectSource source, TTarget target, bool isStackable = true)
         {
             Source = source;
-            Name = name;
+            Target = target;
             IsStackable = isStackable;
+            Conditions = new List<Func<bool>>();
         }
 
-        public void Apply() { }
-        public void UnApply() { }
-    }
-
-    public interface ICharacterEffect : IEffect
-    {
-        Character Character { get; }
-    }
-
-    public class CharacterEffect : Effect, ICharacterEffect
-    {
-        public Character Character { get; protected set; }
-
-        public CharacterEffect(IAbility source, string name = "Default Effect Name", bool isStackable = false) : base(source, name, isStackable)
+        /// <summary>
+        /// Remove the effect if it is no longer valid.
+        /// </summary>
+        public void Validate()
         {
+            if(Conditions.Any(x => !x.Invoke())) Target.RemoveEffect(this);
         }
-    }
 
-    public interface IBodyPartEffect : IEffect
-    {
-        BodyPart BodyPart { get; }
-    }
-
-    public class BodyPartEffect : Effect, IBodyPartEffect
-    {
-        public BodyPart BodyPart { get; protected set; }
-
-        public BodyPartEffect(BodyPart bodyPart, IAbility source, string name = "Default Effect Name", bool isStackable = false) : base(source, name, isStackable)
+        public void Apply()
         {
-            BodyPart = bodyPart;
+            throw new NotImplementedException();
         }
-    }
 
-    public interface IRegionCubeEffect : IEffect
-    {
-        RegionCube RegionCube { get; }
-    }
-
-    public class RegionCubeEffect : Effect, IRegionCubeEffect
-    {
-        public RegionCube RegionCube { get; protected set; }
-
-        public RegionCubeEffect(RegionCube regionCube, IAbility source, string name = "Default Effect Name", bool isStackable = false) : base(source, name, isStackable)
+        public void UnApply()
         {
-            RegionCube = regionCube;
-        }
-    }
-
-    public interface IItemEffect : IEffect
-    {
-        Item Item { get; }
-    }
-
-    public class ItemEffect : Effect, IItemEffect
-    {
-        public Item Item { get; protected set; }
-
-        public ItemEffect(Item item, IAbility source, string name = "Default Effect Name", bool isStackable = false) : base(source, name, isStackable)
-        {
-            Item = item;
+            throw new NotImplementedException();
         }
     }
 }
