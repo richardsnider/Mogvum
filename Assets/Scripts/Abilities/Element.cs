@@ -2,7 +2,7 @@
 {
     public enum Element
     {
-        Air,
+        Wind,
         Earth,
         Fire,
         Lightning,
