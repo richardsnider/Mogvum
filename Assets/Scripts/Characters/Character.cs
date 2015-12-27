@@ -1,11 +1,13 @@
 ﻿using System;
-using Assets.Scripts.Characters.BodyParts;
+using System.Collections.Generic;
+using Assets.Scripts.Abilities;
+using Assets.Scripts.Effects;
 using Assets.Scripts.Regions;
 
 namespace Assets.Scripts.Characters
 {
     [Serializable]
-    public class Character
+    public class Character : IEffectSource, IEffectTarget<Character>
     {
         public RegionCube Cube { get; private set; }
         public CharacterTitles Titles { get; private set; }
@@ -23,13 +25,29 @@ namespace Assets.Scripts.Characters
             Allegiance = allegiance ?? new Allegiance(this);
             Type = type ?? new CharacterType(this);
             Anatomy = anatomy ?? new Anatomy(this);
-            Skill = skill ?? new Skill();
+            Skill = skill ?? new Skill(this);
             ActionPoints = actionPoints ?? new ActionPoints(this);
         }
 
         public void Destroy()
         {
             Cube.RemoveOccupant(this);
+        }
+
+        public ICollection<IEffect<Character>> Effects { get; set; }
+        public void AddEffect(IEffect<Character> effect)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveEffect(IEffect<Character> effect)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AttemptAbility(IAbility ability)
+        {
+            
         }
     }
 }

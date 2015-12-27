@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Assets.Scripts.Characters.BodyParts;
-using Assets.Scripts.Items;
 
 namespace Assets.Scripts.Characters
 {
