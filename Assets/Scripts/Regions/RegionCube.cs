@@ -10,7 +10,7 @@ namespace Assets.Scripts.Regions
     [Serializable]
     public class RegionCube : IHasInventory, IEffectTarget<RegionCube>
     {
-        private Region Region { get; set; }
+        public Region Region { get; private set; }
         public int X { get; private set; }
         public int Y { get; private set; }
         public int Z { get; private set; }
@@ -21,7 +21,12 @@ namespace Assets.Scripts.Regions
         public int Cover { get; private set; }
         public int Lighting { get; private set; }
 
-        public RegionCube(Region region, int x, int y, int z, Matter matter = Matter.Vacuum, ICollection<IEffect> effects = null,
+        public bool IsTraversable
+        {
+            get { return Matter == Matter.Air && !Occupants.Any(); }
+        }
+
+        public RegionCube(Region region, int x, int y, int z, Matter matter = Matter.Vacuum,
             ICollection<Character> occupants = null, Inventory inventory = null, int cover = 0, int lighting = 100)
         {
             Region = region;
