@@ -9,15 +9,17 @@ namespace Assets.Scripts
     [Serializable]
     public class World
     {
-        private Game Game { get; set; }
+        public Game Game { get; private set; }
         public ICollection<Faction> Factions { get; private set; }
         public ICollection<Region> Regions { get; private set; }
+        public uint Date { get; private set; }
 
-        public World(Game game, ICollection<Faction> factions = null, ICollection<Region> regions = null, int startingFactions = 1, int startingRegions = 1)
+        public World(Game game, ICollection<Faction> factions = null, ICollection<Region> regions = null, int startingFactions = 1, int startingRegions = 1, UInt32 date = 0)
         {
             Game = game;
             Factions = factions ?? new List<Faction>();
             Regions = regions ?? new List<Region>();
+            Date = date;
 
             if(Factions.Count < 1)
                 AddFactions(startingFactions);
