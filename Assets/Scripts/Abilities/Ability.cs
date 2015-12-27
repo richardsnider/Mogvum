@@ -1,31 +1,38 @@
-﻿using System.Collections.Generic;
-using Assets.Scripts.Characters;
-using Assets.Scripts.Effects;
-
-namespace Assets.Scripts.Abilities
+﻿namespace Assets.Scripts.Abilities
 {
-    public class Ability : IAbility
+    public abstract class Ability : IAbility
     {
         bool counter;
-        //var for special ability vs Item ability vs regular skill ability ?
 
-        public void Perform(Character source, ICollection<ITargetable> targets)
+
+
+
+        /// <summary>
+        /// Stop the ability from performing.
+        /// </summary>
+        public void Counter()
         {
-            //foreach(var target in targets)
-            //{
-            //    //target.addeffect
-            //}
+            
+        }
+
+
+        public void Perform()
+        {
+            throw new System.NotImplementedException();
         }
     }
 
     public interface IAbility
     {
-        void Perform(Character source, ICollection<ITargetable> targets);
+        void Perform();
     }
 
     interface IAbilityToggle : IAbility
     {
-        void TurnOn(Character source, ICollection<ITargetable> target);
-        void TurnOff(Character source, ICollection<ITargetable> target);
+    }
+
+    interface IItemAbility
+    {
+         
     }
 }
