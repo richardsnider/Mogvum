@@ -1,29 +1,33 @@
 ﻿using System;
+using System.IO;
+using System.Xml.Serialization;
+using Assets.Scripts.Utilities;
 
 namespace Assets.Scripts
 {
     [Serializable]
     public class Game
     {
+        [XmlAttribute("Id")]
         public Guid Id { get; private set; }
-        public DateTime SaveDate { get; private set; }
-        public float GameVersion { get; set; }
-        public float PatchNumber { get; set; }
-
+        [XmlAttribute("Name")]
         public string Name { get; private set; }
-        private World World { get; set; }
+        public DateTime SaveDate { get; private set; }
+        public Version Version { get; set; }
+        public World World { get; private set; }
 
         public Game(Guid id = new Guid(), DateTime? saveDate = null, 
-            float gameVersion = 0, short patchNumber = 0,
+            Version version = null,
             string name = null, World world = null)
         {
             Id = (id == Guid.Empty) ? Guid.NewGuid() : id;
             SaveDate = saveDate ?? DateTime.Now;
-            GameVersion = gameVersion;
-            PatchNumber = patchNumber;
+            Version = version ?? new Version();
 
             Name = name;
             World = world ?? new World(this);
+            
+            Log.Initialize(this);
         }
 
         public void Play()
