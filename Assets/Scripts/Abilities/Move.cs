@@ -1,18 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using Assets.Scripts.Characters;
+﻿using Assets.Scripts.Characters;
 using Assets.Scripts.Regions;
 using UnityEngine;
 
 namespace Assets.Scripts.Abilities
 {
-    public class Move : Ability
+    public class MoveOne : Ability
     {
-        public void Perform(Character source, ICollection<RegionCube> target)
+        public void Attempt(Character source, RegionCube target)
         {
-            //THIS MIGHT NEED SOME WORK. NOT SURE IF I CAN CHANGE THE PARAMETERS.
+            Debug.Log("Unable to move.");
 
-            //IF I HAVE AN IAbility, it might call the base class Perform method and not this one. Hopefully not.
+        }
+
+        public void Perform(Character source, RegionCube target)
+        {
+            target.AddOccupant(source);
 
 
             //character.Stats.Energy -= character.Skills.Kinesis.Move;
