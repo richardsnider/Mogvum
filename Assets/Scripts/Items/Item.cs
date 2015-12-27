@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Abilities;
 using Assets.Scripts.Effects;
@@ -18,7 +17,6 @@ namespace Assets.Scripts.Items
         public bool IsSpectral { get; private set; }
         public Resistance Resistance { get; private set; }
         public ICollection<Ability> Abilities { get; private set; }
-        public ICollection<Effect> Effects { get; set; }
 
         public Item(Inventory containingInventory, string name = null, int weight = 0, int size = 0, Condition condition = null, bool isEquipment = false, bool isSpectral = false, Resistance resistance = null)
         {
